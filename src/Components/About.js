@@ -9,23 +9,28 @@ import heroImage from "../Assets/hero.avif";
 const About = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
-      <section>
+      {/* Hero Section */}
+      <section className="position-relative">
         <img
           src={heroImage}
           alt="About Banner"
-          className="img-fluid w-100"
+          className="img-fluid w-100 hero-banner"
           style={{
             maxHeight: "500px",
             objectFit: "cover",
             filter: "brightness(75%)",
           }}
         />
-        <div className="position-absolute top-50 start-50 translate-middle text-white text-center">
-          <h1 className="display-3 fw-bold">About ShopEase</h1>
+        <div
+          className="position-absolute top-50 start-50 translate-middle text-white text-center px-3"
+          style={{ zIndex: 1 }}
+        >
+          <h1 className="display-4 display-md-3 fw-bold">About ShopEase</h1>
           <p className="lead">Driven by passion. Guided by purpose.</p>
         </div>
       </section>
 
+      {/* Mission & Vision Section */}
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row align-items-center g-5">
@@ -54,6 +59,7 @@ const About = () => {
         </div>
       </section>
 
+      {/* Team Section */}
       <section className="py-5 bg-white text-center">
         <div className="container">
           <h2 className="fw-bold mb-4">Meet the Team</h2>
@@ -87,6 +93,7 @@ const About = () => {
         </div>
       </section>
 
+      {/* CTA Section */}
       <section className="bg-dark text-light text-center py-5">
         <div className="container">
           <h2 className="fw-bold mb-3">Ready to Join Our Journey?</h2>
