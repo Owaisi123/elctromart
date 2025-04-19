@@ -8,7 +8,7 @@ import heroImage from "../Assets/hero.avif";
 
 const About = () => {
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <section>
         <img
           src={heroImage}
@@ -93,7 +93,10 @@ const About = () => {
           <p className="lead mb-4">
             Be a part of the ShopEase community — where shopping meets ease!
           </p>
-          <Link to="/login" className="btn btn-warning btn-lg px-4 py-2 shadow">
+          <Link
+            to="/login"
+            className="btn btn-warning btn-lg px-4 py-2 shadow"
+          >
             Join Us Now
           </Link>
         </div>
@@ -103,3 +106,4 @@ const About = () => {
 };
 
 export default About;
+
