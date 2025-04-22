@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Login = () => {
@@ -15,14 +16,30 @@ const Login = () => {
     setUserEmail(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
     if (userName && userEmail) {
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("name", userName);
       localStorage.setItem("email", userEmail);
 
-      navigate("/profile", { state: { name: userName, email: userEmail } });
+      Swal.fire({
+        title: "Success!",
+        text: "You have logged in successfully!",
+        icon: "success",
+        confirmButtonText: "OK",
+        timer: 1500,
+        timerProgressBar: true,
+      }).then(() => {
+        navigate("/profile", { state: { name: userName, email: userEmail } });
+      });
+    } else {
+      Swal.fire({
+        title: "Error!",
+        text: "Please fill in both name and email.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
 
@@ -30,7 +47,7 @@ const Login = () => {
     <div className="container mt-5">
       <div className="card p-4 mx-auto" style={{ maxWidth: "400px" }}>
         <h3 className="text-center">Login</h3>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-3">
             <label className="form-label">Name</label>
             <input
@@ -51,7 +68,11 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button
+            type="button"
+            onClick={handleLogin}
+            className="btn btn-primary w-100"
+          >
             Login
           </button>
         </form>
