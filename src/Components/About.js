@@ -9,7 +9,6 @@ import heroImage from "../Assets/hero.avif";
 const About = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
-      {/* Hero Section */}
       <section className="position-relative">
         <img
           src={heroImage}
@@ -30,7 +29,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row align-items-center g-5">
@@ -59,7 +57,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
       <section className="py-5 bg-white text-center">
         <div className="container">
           <h2 className="fw-bold mb-4">Meet the Team</h2>
@@ -93,17 +90,13 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="bg-dark text-light text-center py-5">
         <div className="container">
           <h2 className="fw-bold mb-3">Ready to Join Our Journey?</h2>
           <p className="lead mb-4">
             Be a part of the ShopEase community — where shopping meets ease!
           </p>
-          <Link
-            to="/login"
-            className="btn btn-warning btn-lg px-4 py-2 shadow"
-          >
+          <Link to="/login" className="btn btn-warning btn-lg px-4 py-2 shadow">
             Join Us Now
           </Link>
         </div>
@@ -113,4 +106,3 @@ const About = () => {
 };
 
 export default About;
-
