@@ -1,15 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    navigate("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg sticky-top py-4">
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold fs-3 text-warning" to="/">
           ElectroMart
         </Link>
-
         <button
           className="navbar-toggler border-0"
           type="button"
@@ -21,7 +30,6 @@ const Header = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 d-flex justify-content-center">
             <li className="nav-item mx-3">
@@ -55,11 +63,19 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-
           <div className="d-flex ms-auto align-items-center">
-            <Link to="/login" className="btn btn-outline-light py-2 px-4">
-              Login
-            </Link>
+            {isLoggedIn ? (
+              <button
+                className="btn btn-outline-danger py-2 px-4"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            ) : (
+              <Link to="/login" className="btn btn-outline-light py-2 px-4">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -68,3 +84,4 @@ const Header = () => {
 };
 
 export default Header;
+
